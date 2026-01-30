@@ -2,11 +2,11 @@ name = "vonge-hugo"
 license = "MIT"
 licenselink = "LICENSE"
 description = "Vonge is a portfolio and blog theme inspired by the Zola Vonge theme."
-homepage = ""
+homepage = "https://github.com/vincent-sha/vonge-hugo"
 
 [author]
-  name = ""
-  homepage = ""
+  name = "vincent-sha"
+  homepage = "https://vincent-blog.top/"
 
 [original]
   name = "Vonge (Zola theme)"

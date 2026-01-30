@@ -1,13 +1,144 @@
-baseURL = 'https://vincent-strapi.top'
+baseURL = 'https://example.com'
 languageCode = 'en-us'
 title = 'Vonge'
 theme = 'vonge-hugo'
+defaultContentLanguage = 'en'
+defaultContentLanguageInSubdir = true
+hasCJKLanguage = true
 
 [pagination]
 	pagerSize = 6
 
 [taxonomies]
 	tag = 'tags'
+
+[languages]
+	[languages.en]
+		languageCode = 'en-us'
+		languageName = 'English'
+		weight = 1
+		contentDir = 'content/en'
+	[languages.zh-cn]
+		languageCode = 'zh-cn'
+		languageName = '简体中文'
+		weight = 2
+		contentDir = 'content/zh-cn'
+		[languages.zh-cn.params]
+			author = 'Vanessa Marley'
+			description = 'Vonge 是一款适用于作品集与博客的 Hugo 主题'
+			logo_image = 'images/logo.svg'
+			social_media_share_image = '/images/01.jpg'
+			disqus_identifier = ''
+			google_analytics = ''
+			twitter_handle = ''
+			author_image = '/images/avatar.jpg'
+			date_format = '2006-01-02'
+			language_direction = 'auto'
+			keywords = ['关键词1', '关键词2', '关键词3']
+
+			[[languages.zh-cn.params.navigation]]
+				url = '$BASE_URL'
+				title = '首页'
+			[[languages.zh-cn.params.navigation]]
+				url = '$BASE_URL/projects'
+				title = '项目'
+			[[languages.zh-cn.params.navigation]]
+				url = '$BASE_URL/posts'
+				title = '博客'
+			[[languages.zh-cn.params.navigation]]
+				url = '$BASE_URL/tags'
+				title = '标签'
+			[[languages.zh-cn.params.navigation]]
+				url = ''
+				title = '页面'
+				[[languages.zh-cn.params.navigation.submenu]]
+					url = '$BASE_URL/about'
+					title = '关于'
+				[[languages.zh-cn.params.navigation.submenu]]
+					url = '$BASE_URL/elements'
+					title = '元素'
+
+			[[languages.zh-cn.params.social_icons]]
+				url = 'https://github.com/cydave'
+				icon = 'GitHub'
+			[[languages.zh-cn.params.social_icons]]
+				url = 'https://twitter.com/_cydave'
+				icon = 'Twitter'
+			[[languages.zh-cn.params.social_icons]]
+				url = '$BASE_URL/atom.xml'
+				icon = 'RSS'
+			[[languages.zh-cn.params.social_icons]]
+				url = 'https://pinterest.com'
+				icon = 'Pinterest'
+
+			[languages.zh-cn.params.newsletter]
+				newsletter_title = '订阅我的邮件'
+				newsletter_identifier = ''
+				newsletter_button = '订阅'
+				newsletter_description = '获取灵感、更新和干货！'
+
+			[languages.zh-cn.params.footer]
+				[[languages.zh-cn.params.footer.menu]]
+					url = '$BASE_URL'
+					title = '首页'
+				[[languages.zh-cn.params.footer.menu]]
+					url = '$BASE_URL/projects/'
+					title = '项目'
+				[[languages.zh-cn.params.footer.menu]]
+					url = '$BASE_URL/elements/'
+					title = '元素'
+				[[languages.zh-cn.params.footer.menu]]
+					url = '$BASE_URL/about/'
+					title = '关于'
+				[[languages.zh-cn.params.footer.menu]]
+					url = '$BASE_URL/posts/'
+					title = '博客'
+
+			[[languages.zh-cn.params.content_blocks]]
+				block = 'hero'
+				title = '你好，我是 Vanessa Marley'
+				description_html = '<strong>摄影师</strong> 与视觉内容策略师，来自 Albany。我从事生活方式、产品与风景摄影，为线上媒体到印刷艺术的多样需求创作图像。'
+				image = '/images/01.jpg'
+				image_alt = "Vanessa Marley 的照片"
+				cta_button_link = '#contact'
+				cta_button = '联系我'
+				works_button_link = '#projects'
+				works_button = '查看作品'
+
+			[[languages.zh-cn.params.content_blocks]]
+				block = 'projects-section'
+				title = '最新作品'
+				description_html = '<p>我只展示最好的作品，完全出于热情、简洁与创造力！</p>'
+				link_url = '/projects'
+				show_projects = true
+
+			[[languages.zh-cn.params.content_blocks]]
+				block = 'testimonials-section'
+				title = '客户评价'
+				description_html = ''
+				show_testimonials = true
+
+			[[languages.zh-cn.params.content_blocks]]
+				block = 'blog-section'
+				title = '最新文章'
+				description_html = '<p>Vonge 博客分享效率、灵感与实用策略，帮助你把博客做得更好！</p>'
+				link_url = '/posts'
+				show_posts = true
+
+			[[languages.zh-cn.params.content_blocks]]
+				block = 'newsletter'
+				newsletter_title = '订阅我的邮件'
+				newsletter_description = '获取灵感、更新和干货！'
+				newsletter_identifier = ''
+				newsletter_button = '订阅'
+
+			[[languages.zh-cn.params.content_blocks]]
+				block = 'contact-form'
+				form_title = '取得联系'
+				form_description = 'Vonge 内置联系表单。'
+				form_success_page = ''
+				form_submission_email = 'site@example.com'
+				form_button_text = '发送'
 
 [params]
 	author = 'Vanessa Marley'
