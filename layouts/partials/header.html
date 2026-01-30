@@ -51,6 +51,20 @@
           </div>
 
           {{ partial "social-link.html" $ }}
+
+          {{ if hugo.IsMultilingual }}
+          <div class="lang-switcher" aria-label="Language switcher">
+            <button class="lang-switcher__toggle" type="button" aria-label="Switch language">
+              <i class="ion ion-md-globe"></i>
+            </button>
+            <div class="lang-switcher__menu" role="menu">
+              {{ range $.Site.Home.AllTranslations }}
+                {{ $isCurrent := eq .Lang $.Site.Language.Lang }}
+                <a class="lang-switcher__link {{ if $isCurrent }}is-active{{ end }}" href="{{ .RelPermalink }}" role="menuitem">{{ .Language.LanguageName }}</a>
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
         </nav>
 
         <div class="nav-button">
