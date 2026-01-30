@@ -30,11 +30,14 @@
   }
 
   window.addEventListener('scroll', function () {
-    var currentScroll = document.scrollingElement.scrollTop;
+    var currentScroll = window.pageYOffset || document.documentElement.scrollTop || 0;
     var disqus_target = document.getElementById('disqus_thread');
 
-    if (disqus_target && (currentScroll > disqus_target.getBoundingClientRect().top - 150)) {
-      load_disqus('disqus_shortname');
+    if (disqus_target) {
+      var targetTop = disqus_target.getBoundingClientRect().top + (window.scrollY || 0);
+      if (currentScroll > targetTop - 150) {
+        load_disqus();
+      }
     }
   }, false);
 
