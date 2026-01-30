@@ -1,0 +1,24 @@
+{{ define "main" }}
+  <div class="container">
+    {{ partial "components/page-heading.html" (dict "title" .Title "description" .Description "taxonomies" .Params "context" .) }}
+    {{ $image := or .Params.image (index .Params "extra" "image") }}
+    {{ partial "components/page-image.html" (dict "image" $image "image_alt" .Title "context" .) }}
+
+    <div class="page animate">
+      {{ .Content }}
+    </div>
+
+    {{ with .NextInSection }}
+    <div class="project__navigation">
+      <a class="project__prev" href="{{ .RelPermalink }}">
+        <div class="project__box">
+          <span class="project__nav__info">Next Project</span>
+          <h2 class="project__nav__title">{{ .Title }}<i class="ion ion-md-arrow-round-forward arrow-right"></i></h2>
+        </div>
+      </a>
+    </div>
+    {{ end }}
+  </div>
+
+  {{ partial "components/newsletter.html" (dict "config" .Site.Params.newsletter "context" .) }}
+{{ end }}

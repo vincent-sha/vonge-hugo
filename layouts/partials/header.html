@@ -1,0 +1,65 @@
+<!-- begin header -->
+<header class="c-header">
+  <div class="container">
+    <div class="row">
+      <div class="c-header__inner">
+
+        <div class="logo">
+          <a class="logo__link" href="{{ .Site.BaseURL }}">
+            {{ with .Site.Params.logo_image }}
+              <img class="logo__image" src="{{ . | relURL }}" alt="{{ $.Site.Title }}">
+            {{ else }}
+              {{ .Site.Title }}
+            {{ end }}
+          </a>
+        </div>
+
+        {{ with .Site.Params.navigation }}
+        <nav class="main-nav">
+          <div class="main-nav__box">
+            <div class="nav__icon-close">
+              <i class="ion ion-md-close"></i>
+            </div>
+
+            <div class="nav__title">Menu</div>
+
+            <ul class="nav__list list-reset">
+              {{ $current := strings.TrimSuffix "/" $.Permalink }}
+              {{ range . }}
+                {{ $item := . }}
+                {{ $url := replace $item.url "$BASE_URL" $.Site.BaseURL }}
+                {{ $isActive := and $url (eq (strings.TrimSuffix "/" $url) $current) }}
+
+                {{ with $item.submenu }}
+                  <li class="nav__item dropdown">
+                    <span class="nav__link dropdown-toggle">{{ $item.title }} <i class="ion ion-ios-arrow-down arrow-down"></i></span>
+                    <div class="dropdown-menu">
+                      {{ range . }}
+                        {{ $subUrl := replace .url "$BASE_URL" $.Site.BaseURL }}
+                        {{ $subActive := and $subUrl (eq (strings.TrimSuffix "/" $subUrl) $current) }}
+                        <a href="{{ $subUrl }}" class="nav__link {{ if $subActive }}active-link{{ end }}">{{ .title }}</a>
+                      {{ end }}
+                    </div>
+                  </li>
+                {{ else }}
+                  <li class="nav__item">
+                    <a href="{{ $url }}" class="nav__link {{ if $isActive }}active-link{{ end }}">{{ $item.title }}</a>
+                  </li>
+                {{ end }}
+              {{ end }}
+            </ul>
+          </div>
+
+          {{ partial "social-link.html" $ }}
+        </nav>
+
+        <div class="nav-button">
+          <i class="nav__icon nav__icon-menu ion ion-md-menu"></i>
+        </div>
+        {{ end }}
+
+      </div>
+    </div>
+  </div>
+</header>
+<!-- end header -->

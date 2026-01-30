@@ -1,0 +1,47 @@
+{{ $page := .page }}
+<div class="article col col-4 col-d-6 col-t-12">
+  <div class="article__inner">
+
+    {{ $image := or $page.Params.image (index $page.Params "extra" "image") }}
+    {{ with $image }}
+    <div class="image-wrap">
+      <a class="article__image" href="{{ $page.RelPermalink }}">
+        <img loading="lazy" src="{{ . | relURL }}" alt="{{ $page.Title }}">
+      </a>
+    </div>
+    {{ end }}
+
+    <div class="article__content">
+
+      {{ $tags := or $page.Params.tags (index $page.Params "taxonomies" "tags") }}
+      {{ with $tags }}
+      <div class="article-tags__box">
+        {{ range . }}
+          <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="article__tag">{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <h2 class="article__title">
+        <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+      </h2>
+
+      <p class="article__excerpt">
+        {{ if $page.Description }}{{ $page.Description }}{{ else }}{{ $page.Summary | truncate 120 }}{{ end }}
+      </p>
+
+      {{ $authorImage := or $page.Params.author_image (index $page.Params "extra" "author_image") | default $.context.Site.Params.author_image }}
+      {{ $authorName := $page.Params.author | default $.context.Site.Params.author }}
+      <div class="article__meta">
+        <div class="article__author-image">
+          <img loading="lazy" src="{{ $authorImage | relURL }}" alt="{{ $authorName }}">
+        </div>
+        <div class="article-info">
+          <div class="article__author-name">{{ $authorName }}</div>
+          <span class="article__date"><time datetime="{{ $page.Date.Format "2006-01-02 15:04:05 -0700" }}">{{ $page.Date.Format ($.context.Site.Params.date_format | default "02 Jan 2006") }}</time></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

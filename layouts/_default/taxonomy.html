@@ -1,0 +1,37 @@
+{{ define "main" }}
+  {{ $taxonomyTitle := title .Data.Plural }}
+  {{ $title := title .Data.Term }}
+  {{ partial "components/page-heading.html" (dict "title" $title "description" false "taxonomies" false "context" .) }}
+
+  <div class="container">
+    {{ $sections := slice }}
+    {{ range .Pages }}
+      {{ $section := .Section | default "" }}
+      {{ if $section }}
+        {{ $sections = $sections | append $section }}
+      {{ end }}
+    {{ end }}
+    {{ range $section := $sections | uniq | sort }}
+      <h1>{{ title $section }}</h1>
+      <div class="row">
+        <div class="col col-12">
+          <div class="contaniner__inner animate">
+            <div class="row">
+              {{ range $.Pages }}
+                {{ if eq .Section $section }}
+                  {{ if eq $section "projects" }}
+                    {{ partial "components/project-card.html" (dict "page" . "context" $) }}
+                  {{ else }}
+                    {{ partial "components/blog-card.html" (dict "page" . "context" $) }}
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {{ end }}
+  </div>
+
+  {{ partial "components/newsletter.html" (dict "config" .Site.Params.newsletter "context" .) }}
+{{ end }}

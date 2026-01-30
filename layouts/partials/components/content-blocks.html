@@ -1,0 +1,39 @@
+{{ $blocks := .blocks }}
+{{ if $blocks }}
+  {{ range $blocks }}
+    {{ $blockType := .block }}
+    {{ if eq $blockType "blog-card" }}
+      {{ partial "components/blog-card.html" (dict "page" . "context" $.context) }}
+    {{ else if eq $blockType "blog-section" }}
+      {{ partial "components/blog-section.html" (dict "data" . "context" $.context) }}
+    {{ else if eq $blockType "contact-form" }}
+      {{ partial "components/contact-form.html" (dict "data" . "context" $.context) }}
+    {{ else if eq $blockType "content" }}
+      {{ partial "components/content.html" (dict "content_html" .content_html "context" $.context) }}
+    {{ else if eq $blockType "hero" }}
+      {{ partial "components/hero.html" (dict "data" . "context" $.context) }}
+    {{ else if eq $blockType "newsletter" }}
+      {{ partial "components/newsletter.html" (dict "config" . "context" $.context) }}
+    {{ else if eq $blockType "page-heading" }}
+      {{ partial "components/page-heading.html" (dict "title" .title "description" .description "taxonomies" (default false .taxonomies) "context" $.context) }}
+    {{ else if eq $blockType "page-image" }}
+      {{ partial "components/page-image.html" (dict "image" .image "image_alt" .image_alt "context" $.context) }}
+    {{ else if eq $blockType "pagination" }}
+      {{ partial "components/pagination.html" (dict "paginator" $.paginator "context" $.context) }}
+    {{ else if eq $blockType "posts-list" }}
+      {{ partial "components/posts-list.html" (dict "data" . "context" $.context "paginator" $.paginator) }}
+    {{ else if eq $blockType "project-card" }}
+      {{ partial "components/project-card.html" (dict "page" . "context" $.context) }}
+    {{ else if eq $blockType "projects-list" }}
+      {{ partial "components/projects-list.html" (dict "data" . "context" $.context) }}
+    {{ else if eq $blockType "projects-section" }}
+      {{ partial "components/projects-section.html" (dict "data" . "context" $.context) }}
+    {{ else if eq $blockType "tags-list" }}
+      {{ partial "components/tags-list.html" (dict "terms" .terms "context" $.context) }}
+    {{ else if eq $blockType "testimonial-card" }}
+      {{ partial "components/testimonial-card.html" (dict "page" . "context" $.context) }}
+    {{ else if eq $blockType "testimonials-section" }}
+      {{ partial "components/testimonials-section.html" (dict "data" . "context" $.context) }}
+    {{ end }}
+  {{ end }}
+{{ end }}

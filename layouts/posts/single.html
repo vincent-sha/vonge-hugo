@@ -1,0 +1,71 @@
+{{ define "main" }}
+  <div class="post-top">
+    <div class="container">
+      <div class="row">
+
+        {{ $image := or .Params.image (index .Params "extra" "image") }}
+        {{ with $image }}
+        <div class="col col-6 col-d-12">
+          <div class="post-image">
+            <img loading="lazy" src="{{ . | relURL }}" alt="{{ $.Title }}">
+          </div>
+        </div>
+        {{ end }}
+
+        <div class="col col-6 col-d-12">
+          <div class="post__info">
+
+            {{ $tags := or .Params.tags (index .Params "taxonomies" "tags") }}
+            {{ with $tags }}
+            <div class="post-tags">
+              {{ range . }}
+                <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="post-tags__tag">{{ . }}</a>
+              {{ end }}
+            </div>
+            {{ end }}
+
+            <h1 class="post__title">{{ .Title }}</h1>
+
+            {{ $authorImage := or .Params.author_image (index .Params "extra" "author_image") | default .Site.Params.author_image }}
+            {{ $authorName := .Params.author | default .Site.Params.author }}
+            <div class="post__meta">
+              <div class="post__author-image">
+                <img loading="lazy" src="{{ $authorImage | relURL }}" alt="{{ $authorName }}">
+              </div>
+
+              <div class="post__meta-bottom">
+                <div class="post__author">{{ $authorName }}</div>
+                <time class="post__date" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">
+                  {{ .Date.Format (.Site.Params.date_format | default "02 Jan 2006") }}
+                </time>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container animate">
+    <article class="post">
+      <div class="post__content">
+        {{ .Content }}
+      </div>
+
+      {{ partial "share.html" . }}
+    </article>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col col-10 col-d-12 push-d-0 push-1">
+        {{ partial "post-navigation.html" . }}
+      </div>
+    </div>
+  </div>
+
+  {{ partial "disqus-comments.html" . }}
+  {{ partial "related-posts.html" . }}
+  {{ partial "components/newsletter.html" (dict "config" .Site.Params.newsletter "context" .) }}
+{{ end }}

@@ -1,0 +1,54 @@
+{{ $page := .page }}
+{{ $c := "c-blog-card" }}
+<div class="{{ $c }} col col-4 col-d-6 col-t-12">
+  <div class="{{ $c }}__inner">
+
+    {{ $image := or $page.Params.image (index $page.Params "extra" "image") }}
+    {{ with $image }}
+    <div class="{{ $c }}__image-wrap">
+      <a class="{{ $c }}__image" href="{{ $page.RelPermalink }}">
+        <img loading="lazy" src="{{ . | relURL }}" alt="{{ $page.Title }}">
+      </a>
+    </div>
+    {{ end }}
+
+    <div class="{{ $c }}__content">
+
+      {{ $tags := or $page.Params.tags (index $page.Params "taxonomies" "tags") }}
+      {{ with $tags }}
+      <div class="{{ $c }}__tags-box">
+        {{ range . }}
+          <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="{{ $c }}__tag">{{ . }}</a>
+        {{ end }}
+      </div>
+      {{ end }}
+
+      <h2 class="{{ $c }}__title">
+        <a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+      </h2>
+
+      {{ if or $page.Description $page.Summary }}
+      <p class="{{ $c }}__excerpt">
+        {{ if $page.Description }}
+          {{ $page.Description }}
+        {{ else }}
+          {{ $page.Summary | truncate 120 }}
+        {{ end }}
+      </p>
+      {{ end }}
+
+      {{ $authorImage := or $page.Params.author_image (index $page.Params "extra" "author_image") | default $.context.Site.Params.author_image }}
+      {{ $authorName := $page.Params.author | default $.context.Site.Params.author }}
+      <div class="{{ $c }}__meta">
+        <div class="{{ $c }}__author-image">
+          <img loading="lazy" src="{{ $authorImage | relURL }}" alt="{{ $authorName }}">
+        </div>
+        <div class="{{ $c }}__info">
+          <div class="{{ $c }}__author-name">{{ $authorName }}</div>
+          <span class="{{ $c }}__date"><time datetime="{{ $page.Date.Format "2006-01-02 15:04:05 -0700" }}">{{ $page.Date.Format ($.context.Site.Params.date_format | default "02 Jan 2006") }}</time></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

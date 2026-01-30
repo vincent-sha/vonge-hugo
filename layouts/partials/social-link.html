@@ -1,0 +1,14 @@
+{{ with .Site.Params.social_icons }}
+<div class="social">
+  <ul class="social__list list-reset">
+    {{ range . }}
+      {{ $url := replace .url "$BASE_URL" $.Site.BaseURL }}
+      <li class="social__item">
+        <a class="social__link" href="{{ $url }}" target="_blank" rel="noopener" aria-label="{{ .icon }} icon">
+          <i class="ion ion-logo-{{ lower .icon }}"></i>
+        </a>
+      </li>
+    {{ end }}
+  </ul>
+</div>
+{{ end }}

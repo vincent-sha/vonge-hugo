@@ -1,0 +1,28 @@
+{{ $page := .page }}
+{{ $c := "c-testimonial-card" }}
+<div class="{{ $c }}">
+  <div class="{{ $c }}__content">
+    <div class="{{ $c }}__client-meta">
+      {{ $image := or $page.Params.image (index $page.Params "extra" "image") }}
+      {{ $name := or $page.Params.name (index $page.Params "extra" "name") }}
+      {{ $position := or $page.Params.position (index $page.Params "extra" "position") }}
+      {{ $blurb := or $page.Params.blurb (index $page.Params "extra" "blurb") }}
+      {{ with $image }}
+        <div class="{{ $c }}__image-container">
+            <img class="{{ $c }}__client-avatar" src="{{ . | relURL }}" alt="{{ $name }}">
+        </div>
+      {{ end }}
+      <div class="{{ $c }}__client-info">
+          {{ with $name }}
+          <h3 class="{{ $c }}__client-name">{{ . }}</h3>
+        {{ end }}
+          {{ with $position }}
+          <p class="{{ $c }}__client-position">{{ . }}</p>
+        {{ end }}
+      </div>
+    </div>
+      {{ with $blurb }}
+      <p class="{{ $c }}__client-text">{{ . }}</p>
+    {{ end }}
+  </div>
+</div>

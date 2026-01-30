@@ -1,0 +1,10 @@
+{{ $data := .data }}
+{{ if $data.show_projects }}
+  <div class="container animate">
+    <div class="row">
+      {{ range where .context.Site.RegularPages "Section" "projects" }}
+        {{ partial "components/project-card.html" (dict "page" . "context" $.context) }}
+      {{ end }}
+    </div>
+  </div>
+{{ end }}

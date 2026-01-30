@@ -1,0 +1,11 @@
+{{ define "main" }}
+  {{ $blocks := .Params.content_blocks }}
+  {{ if not $blocks }}
+    {{ $blocks = index .Params "extra" "content_blocks" }}
+  {{ end }}
+  {{ if $blocks }}
+    {{ partial "components/content-blocks.html" (dict "blocks" $blocks "context" .) }}
+  {{ else }}
+    {{ partial "components/projects-list.html" (dict "data" (dict "show_projects" true) "context" .) }}
+  {{ end }}
+{{ end }}

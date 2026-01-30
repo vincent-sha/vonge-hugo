@@ -1,0 +1,10 @@
+{{ $c := "c-blog-card" }}
+<div class="{{ $c }}__tags-box">
+  {{ range .terms }}
+    {{ if .Page }}
+      <a href="{{ .Page.RelPermalink }}" class="{{ $c }}__tag">{{ .Page.LinkTitle }}</a>
+    {{ else }}
+      <a href="{{ .RelPermalink }}" class="{{ $c }}__tag">{{ .LinkTitle }}</a>
+    {{ end }}
+  {{ end }}
+</div>

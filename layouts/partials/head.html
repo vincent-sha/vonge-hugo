@@ -1,0 +1,75 @@
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index, follow">
+<title>{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}</title>
+
+{{ with .Params.keywords }}
+  <meta name="keywords" content="{{ delimit . ", " }}">
+{{ else }}
+  {{ with .Site.Params.keywords }}
+    <meta name="keywords" content="{{ delimit . ", " }}">
+  {{ end }}
+{{ end }}
+
+{{ if .Description }}
+  <meta name="description" content="{{ .Description }}">
+  <meta property="og:description" content="{{ .Description }}">
+{{ else if .Site.Params.description }}
+  <meta name="description" content="{{ .Site.Params.description }}">
+  <meta property="og:description" content="{{ .Site.Params.description }}">
+{{ end }}
+
+{{ with .Permalink }}
+  <link rel="canonical" href="{{ . }}">
+{{ end }}
+
+{{ if .Params.author }}
+  <meta name="author" content="{{ .Params.author }}">
+{{ else if .Site.Params.author }}
+  <meta name="author" content="{{ .Site.Params.author }}">
+{{ end }}
+
+{{ $seo := index .Params "seo" }}
+{{ $featuredImage := "" }}
+{{ with $seo }}
+  {{ $featuredImage = index . "featured_image" }}
+{{ end }}
+{{ $featuredImage = or $featuredImage .Params.image }}
+{{ if $featuredImage }}
+  <meta property="og:image" content="{{ $featuredImage | relURL }}">
+  <meta name="twitter:image" content="{{ $featuredImage | relURL }}">
+{{ else if .Site.Params.social_media_share_image }}
+  <meta property="og:image" content="{{ .Site.Params.social_media_share_image | relURL }}">
+  <meta name="twitter:image" content="{{ .Site.Params.social_media_share_image | relURL }}">
+{{ end }}
+
+{{ $authorTwitter := "" }}
+{{ with $seo }}
+  {{ $authorTwitter = index . "author_twitter_handle" }}
+{{ end }}
+{{ if $authorTwitter }}
+  <meta name="twitter:creator" content="{{ $authorTwitter }}">
+{{ else if .Site.Params.twitter_handle }}
+  <meta name="twitter:creator" content="{{ .Site.Params.twitter_handle }}">
+{{ end }}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+{{ if .Description }}
+  <meta name="twitter:description" content="{{ .Description }}">
+{{ else if .Site.Params.description }}
+  <meta name="twitter:description" content="{{ .Site.Params.description }}">
+{{ end }}
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{{ "css/global.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/tag.css" | relURL }}">
+
+{{ with "favicon.ico" | relURL }}
+  <link rel="icon" href="{{ . }}">
+{{ end }}

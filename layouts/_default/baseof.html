@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.Language.Lang | default "en" }}" dir="{{ .Site.Params.language_direction | default "auto" }}">
+  <head>
+    {{ partial "head.html" . }}
+  </head>
+  <body>
+    {{ partial "google-analytics.html" . }}
+    {{ partial "header.html" . }}
+
+    <main class="main">
+      {{ block "main" . }}{{ end }}
+    </main>
+
+    <div class="top" title="Top"><i class="ion ion-ios-arrow-up"></i></div>
+
+    {{ partial "footer.html" . }}
+
+    <script src="https://unpkg.com/lightense-images@1.0.10/dist/lightense.min.js"></script>
+    <script src="https://unpkg.com/reframe.js@3.0.2/dist/reframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/min/tiny-slider.js"></script>
+    <script src="https://unpkg.com/ityped@1.0.3/dist/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script>
+    <script src="{{ "js/common.js" | relURL }}"></script>
+  </body>
+</html>

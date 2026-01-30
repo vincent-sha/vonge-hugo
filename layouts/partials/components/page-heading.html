@@ -1,0 +1,32 @@
+{{ $c := "c-page-heading" }}
+<div class="container">
+
+  <div class="{{ $c }}">
+    {{ $tags := slice }}
+    {{ if .taxonomies }}
+      {{ if reflect.IsSlice .taxonomies }}
+        {{ $tags = .taxonomies }}
+      {{ else if reflect.IsMap .taxonomies }}
+        {{ with index .taxonomies "tags" }}
+          {{ $tags = . }}
+        {{ end }}
+        {{ if not (len $tags) }}
+          {{ with index .taxonomies "Tags" }}
+            {{ $tags = . }}
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+    {{ if $tags }}
+      <div class="project-tags">
+        {{ range $tags }}
+          <a href="{{ "/tags/" | relURL }}{{ . | urlize }}/" class="project-tags__tag">{{ . }}</a>
+        {{ end }}
+      </div>
+    {{ end }}
+    <h1 class="{{ $c }}__title">{{ .title }}</h1>
+    {{ if .description }}
+      <p class="{{ $c }}__description">{{ .description }}</p>
+    {{ end }}
+  </div>
+</div>

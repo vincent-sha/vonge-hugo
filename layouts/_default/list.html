@@ -1,0 +1,16 @@
+{{ define "main" }}
+  {{ $blocks := .Params.content_blocks }}
+  {{ if not $blocks }}
+    {{ $blocks = index .Params "extra" "content_blocks" }}
+  {{ end }}
+  {{ if $blocks }}
+    {{ partial "components/content-blocks.html" (dict "blocks" $blocks "context" . "paginator" (.Paginate .Pages)) }}
+  {{ else }}
+    <div class="container">
+      {{ partial "components/page-heading.html" (dict "title" .Title "description" .Description "taxonomies" .Params "context" .) }}
+      <div class="page animate">
+        {{ .Content }}
+      </div>
+    </div>
+  {{ end }}
+{{ end }}

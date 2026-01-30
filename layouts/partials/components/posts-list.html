@@ -1,0 +1,18 @@
+{{ $data := .data }}
+{{ if $data.show_posts }}
+  <div class="container animate">
+    <div class="row" data-pagebreak="6">
+      {{ $paginator := .paginator }}
+      {{ if $paginator }}
+        {{ range $paginator.Pages }}
+          {{ partial "components/blog-card.html" (dict "page" . "context" $.context) }}
+        {{ end }}
+      {{ else }}
+        {{ range where .context.Pages "Section" "posts" }}
+          {{ partial "components/blog-card.html" (dict "page" . "context" $.context) }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+  {{ partial "components/pagination.html" (dict "paginator" .paginator "context" .context) }}
+{{ end }}

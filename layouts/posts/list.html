@@ -1,0 +1,8 @@
+{{ define "main" }}
+  {{ $paginator := .Paginate (where .Pages "Type" "posts") }}
+  {{ if .Params.content_blocks }}
+    {{ partial "components/content-blocks.html" (dict "blocks" .Params.content_blocks "context" . "paginator" $paginator) }}
+  {{ else }}
+    {{ partial "components/posts-list.html" (dict "data" (dict "show_posts" true) "context" . "paginator" $paginator) }}
+  {{ end }}
+{{ end }}

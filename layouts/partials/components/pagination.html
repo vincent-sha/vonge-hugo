@@ -1,0 +1,34 @@
+{{ $p := .paginator }}
+{{ if $p }}
+<!-- begin pagination -->
+<nav class="pagination">
+  <div class="container">
+    <div class="pagination__inner">
+      <div class="pagination__list">
+
+        {{ $prevText := "Prev" }}
+
+        {{ if $p.HasPrev }}
+          <a data-pagebreak-control="prev" href="{{ $p.Prev.URL }}" class="pagination__prev"><i class='ion ion-ios-arrow-back'></i> {{ $prevText }}</a>
+        {{ else }}
+          <span data-pagebreak-control="!prev" class="pagination__prev disabled">{{ $prevText }}</span>
+        {{ end }}
+
+        <div class="pagination__count">
+          Page <span data-pagebreak-label="current">{{ $p.PageNumber }}</span>
+          of <span data-pagebreak-label="total">{{ $p.TotalPages }}</span>
+        </div>
+
+        {{ $nextText := "Next" }}
+
+        {{ if $p.HasNext }}
+          <a data-pagebreak-control="next" href="{{ $p.Next.URL }}" class="pagination__next">{{ $nextText }}<i class="ion ion-ios-arrow-forward"></i></a>
+        {{ else }}
+          <span data-pagebreak-control="!next" class="pagination__next disabled">{{ $nextText }}</span>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</nav>
+<!-- end pagination -->
+{{ end }}

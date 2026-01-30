@@ -1,0 +1,17 @@
+name = "vonge-hugo"
+license = "MIT"
+licenselink = "LICENSE"
+description = "Vonge is a portfolio and blog theme inspired by the Zola Vonge theme."
+homepage = ""
+
+[author]
+  name = ""
+  homepage = ""
+
+[original]
+  name = "Vonge (Zola theme)"
+  homepage = ""
+  repo = ""
+
+[min_version]
+  hugo = "0.111.0"

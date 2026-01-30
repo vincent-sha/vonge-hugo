@@ -1,0 +1,3 @@
+{{ define "main" }}
+  {{ partial "components/content-blocks.html" (dict "blocks" .Site.Params.content_blocks "context" .) }}
+{{ end }}
