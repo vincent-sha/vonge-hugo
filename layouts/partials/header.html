@@ -27,7 +27,11 @@
               {{ $current := strings.TrimSuffix "/" $.Permalink }}
               {{ range . }}
                 {{ $item := . }}
-                {{ $url := replace $item.url "$BASE_URL" $.Site.BaseURL }}
+                {{ $rawUrl := $item.url }}
+                {{ $url := $rawUrl }}
+                {{ if and $rawUrl (not (or (strings.HasPrefix $rawUrl "http") (strings.HasPrefix $rawUrl "mailto:") (strings.HasPrefix $rawUrl "tel:"))) }}
+                  {{ $url = $rawUrl | relLangURL }}
+                {{ end }}
                 {{ $isActive := and $url (eq (strings.TrimSuffix "/" $url) $current) }}
 
                 {{ with $item.submenu }}
@@ -35,7 +39,11 @@
                     <span class="nav__link dropdown-toggle">{{ $item.title }} <i class="ion ion-ios-arrow-down arrow-down"></i></span>
                     <div class="dropdown-menu">
                       {{ range . }}
-                        {{ $subUrl := replace .url "$BASE_URL" $.Site.BaseURL }}
+                        {{ $subRawUrl := .url }}
+                        {{ $subUrl := $subRawUrl }}
+                        {{ if and $subRawUrl (not (or (strings.HasPrefix $subRawUrl "http") (strings.HasPrefix $subRawUrl "mailto:") (strings.HasPrefix $subRawUrl "tel:"))) }}
+                          {{ $subUrl = $subRawUrl | relLangURL }}
+                        {{ end }}
                         {{ $subActive := and $subUrl (eq (strings.TrimSuffix "/" $subUrl) $current) }}
                         <a href="{{ $subUrl }}" class="nav__link {{ if $subActive }}active-link{{ end }}">{{ .title }}</a>
                       {{ end }}

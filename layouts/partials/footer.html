@@ -9,7 +9,11 @@
         <ul class="footer_nav list-reset">
           {{ with .Site.Params.footer.menu }}
             {{ range . }}
-              {{ $url := replace .url "$BASE_URL" $.Site.BaseURL }}
+              {{ $rawUrl := .url }}
+              {{ $url := $rawUrl }}
+              {{ if and $rawUrl (not (or (strings.HasPrefix $rawUrl "http") (strings.HasPrefix $rawUrl "mailto:") (strings.HasPrefix $rawUrl "tel:"))) }}
+                {{ $url = $rawUrl | relLangURL }}
+              {{ end }}
               <li class="footer_nav__item">
                 <a href="{{ $url }}" class="footer_nav__link">{{ .title }}</a>
               </li>

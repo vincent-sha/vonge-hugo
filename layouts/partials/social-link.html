@@ -2,7 +2,11 @@
 <div class="social">
   <ul class="social__list list-reset">
     {{ range . }}
-      {{ $url := replace .url "$BASE_URL" $.Site.BaseURL }}
+      {{ $rawUrl := .url }}
+      {{ $url := $rawUrl }}
+      {{ if and $rawUrl (not (or (strings.HasPrefix $rawUrl "http") (strings.HasPrefix $rawUrl "mailto:") (strings.HasPrefix $rawUrl "tel:"))) }}
+        {{ $url = $rawUrl | relLangURL }}
+      {{ end }}
       <li class="social__item">
         <a class="social__link" href="{{ $url }}" target="_blank" rel="noopener" aria-label="{{ .icon }} icon">
           <i class="ion ion-logo-{{ lower .icon }}"></i>
