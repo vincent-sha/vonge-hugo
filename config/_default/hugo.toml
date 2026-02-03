@@ -20,15 +20,3 @@ hasCJKLanguage = true
 	twitter_handle = ''
 	author_image = '/images/avatar.jpg'
 
-	[[params.social_icons]]
-		url = 'https://github.com/cydave'
-		icon = 'GitHub'
-	[[params.social_icons]]
-		url = 'https://twitter.com/_cydave'
-		icon = 'Twitter'
-	[[params.social_icons]]
-		url = '/atom.xml'
-		icon = 'RSS'
-	[[params.social_icons]]
-		url = 'https://pinterest.com'
-		icon = 'Pinterest'

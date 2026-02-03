@@ -4,8 +4,8 @@
 	weight = 1
 	contentDir = 'content/en'
 	[en.params]
-		author = 'Vanessa Marley'
-		description = 'Vonge is a portfolio site template for Zola'
+		author = 'Vincent-Sha'
+		description = 'Vonge is a portfolio site template for Hugo'
 		logo_image = 'images/logo.svg'
 		social_media_share_image = '/images/01.jpg'
 		disqus_identifier = ''
@@ -39,17 +39,17 @@
 				title = 'Elements'
 
 		[[en.params.social_icons]]
-			url = 'https://github.com/cydave'
+			url = 'https://github.com/vincent-sha'
 			icon = 'GitHub'
 		[[en.params.social_icons]]
-			url = 'https://twitter.com/_cydave'
+			url = 'https://x.com/vincentshaj'
 			icon = 'Twitter'
 		[[en.params.social_icons]]
 			url = '/atom.xml'
 			icon = 'RSS'
 		[[en.params.social_icons]]
-			url = 'https://pinterest.com'
-			icon = 'Pinterest'
+			url = 'https://www.facebook.com/vincent.sha.948'
+			icon = 'facebook'
 
 		[en.params.newsletter]
 			newsletter_title = 'Join my mailing list'
@@ -76,10 +76,10 @@
 
 		[[en.params.content_blocks]]
 			block = 'hero'
-			title = 'Hi there, I am Vanessa Marley'
+			title = 'Hi there, I am Vincent-Sha'
 			description_html = '<strong>Photographer</strong> and Visual Content Strategist from Albany. I work as a lifestyle, product, and landscape photographer, creating images for a diverse range of requests, from online media to printed artwork.'
 			image = '/images/01.jpg'
-			image_alt = "Vanessa Marley's picture"
+			image_alt = "Vincent-Sha's picture"
 			cta_button_link = '#contact'
 			cta_button = 'Get in touch'
 			works_button_link = '#projects'
@@ -126,7 +126,7 @@
 	weight = 2
 	contentDir = 'content/zh-cn'
 	[zh-cn.params]
-		author = 'Vanessa Marley'
+		author = 'Vincent-Sha'
 		description = 'Vonge 是一款适用于作品集与博客的 Hugo 主题'
 		logo_image = 'images/logo.svg'
 		social_media_share_image = '/images/01.jpg'
@@ -161,17 +161,17 @@
 				title = '元素'
 
 		[[zh-cn.params.social_icons]]
-			url = 'https://github.com/cydave'
+			url = 'https://github.com/vincent-sha'
 			icon = 'GitHub'
 		[[zh-cn.params.social_icons]]
-			url = 'https://twitter.com/_cydave'
+			url = 'https://x.com/vincentshaj'
 			icon = 'Twitter'
 		[[zh-cn.params.social_icons]]
 			url = '/atom.xml'
 			icon = 'RSS'
 		[[zh-cn.params.social_icons]]
-			url = 'https://pinterest.com'
-			icon = 'Pinterest'
+			url = 'https://www.facebook.com/vincent.sha.948'
+			icon = 'facebook'
 
 		[zh-cn.params.newsletter]
 			newsletter_title = '订阅我的邮件'
@@ -198,10 +198,10 @@
 
 		[[zh-cn.params.content_blocks]]
 			block = 'hero'
-			title = '你好，我是 Vanessa Marley'
-			description_html = '<strong>摄影师</strong> 与视觉内容策略师，来自 Albany。我从事生活方式、产品与风景摄影，为线上媒体到印刷艺术的多样需求创作图像。'
+			title = '你好，我是 Vincent-Sha'
+			description_html = '<strong>初次码农</strong> 与视觉内容策略师，来自 Albany。我从事生活方式、产品与风景摄影，为线上媒体到印刷艺术的多样需求创作图像。'
 			image = '/images/01.jpg'
-			image_alt = "Vanessa Marley 的照片"
+			image_alt = "Vincent-Sha 的照片"
 			cta_button_link = '#contact'
 			cta_button = '联系我'
 			works_button_link = '#projects'
