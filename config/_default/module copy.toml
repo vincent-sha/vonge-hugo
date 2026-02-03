@@ -1,0 +1,5 @@
+replacements = ["github.com/vincent-sha/vonge-hugo -> ../../vonge-hugo"]
+
+[[imports]]
+disable = false
+path = "github.com/vincent-sha/vonge-hugo"

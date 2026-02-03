@@ -1,0 +1,243 @@
+[en]
+	languageCode = 'en-us'
+	languageName = 'English'
+	weight = 1
+	contentDir = 'content/en'
+	[en.params]
+		author = 'Vanessa Marley'
+		description = 'Vonge is a portfolio site template for Zola'
+		logo_image = 'images/logo.svg'
+		social_media_share_image = '/images/01.jpg'
+		disqus_identifier = ''
+		google_analytics = ''
+		twitter_handle = ''
+		author_image = '/images/avatar.jpg'
+		date_format = '02 Jan 2006'
+		language_direction = 'auto'
+		keywords = ['keyword1', 'keyword2', 'keyword3']
+
+		[[en.params.navigation]]
+			url = '/'
+			title = 'Home'
+		[[en.params.navigation]]
+			url = '/projects'
+			title = 'Projects'
+		[[en.params.navigation]]
+			url = '/posts'
+			title = 'Blog'
+		[[en.params.navigation]]
+			url = '/tags'
+			title = 'Tags'
+		[[en.params.navigation]]
+			url = ''
+			title = 'Pages'
+			[[en.params.navigation.submenu]]
+				url = '/about'
+				title = 'About'
+			[[en.params.navigation.submenu]]
+				url = '/elements'
+				title = 'Elements'
+
+		[[en.params.social_icons]]
+			url = 'https://github.com/cydave'
+			icon = 'GitHub'
+		[[en.params.social_icons]]
+			url = 'https://twitter.com/_cydave'
+			icon = 'Twitter'
+		[[en.params.social_icons]]
+			url = '/atom.xml'
+			icon = 'RSS'
+		[[en.params.social_icons]]
+			url = 'https://pinterest.com'
+			icon = 'Pinterest'
+
+		[en.params.newsletter]
+			newsletter_title = 'Join my mailing list'
+			newsletter_identifier = ''
+			newsletter_button = 'Subscribe'
+			newsletter_description = 'Get inspiration, updates and, cool stuff!'
+
+		[en.params.footer]
+			[[en.params.footer.menu]]
+				url = '/'
+				title = 'Home'
+			[[en.params.footer.menu]]
+				url = '/projects/'
+				title = 'Projects'
+			[[en.params.footer.menu]]
+				url = '/elements/'
+				title = 'Elements'
+			[[en.params.footer.menu]]
+				url = '/about/'
+				title = 'About'
+			[[en.params.footer.menu]]
+				url = '/posts/'
+				title = 'Blog'
+
+		[[en.params.content_blocks]]
+			block = 'hero'
+			title = 'Hi there, I am Vanessa Marley'
+			description_html = '<strong>Photographer</strong> and Visual Content Strategist from Albany. I work as a lifestyle, product, and landscape photographer, creating images for a diverse range of requests, from online media to printed artwork.'
+			image = '/images/01.jpg'
+			image_alt = "Vanessa Marley's picture"
+			cta_button_link = '#contact'
+			cta_button = 'Get in touch'
+			works_button_link = '#projects'
+			works_button = 'See my works'
+
+		[[en.params.content_blocks]]
+			block = 'projects-section'
+			title = 'Latest Works'
+			description_html = '<p>I show only my best works built completely with passion, simplicity, and creativity!</p>'
+			link_url = '/projects'
+			show_projects = true
+
+		[[en.params.content_blocks]]
+			block = 'testimonials-section'
+			title = 'Happy Clients'
+			description_html = ''
+			show_testimonials = true
+
+		[[en.params.content_blocks]]
+			block = 'blog-section'
+			title = 'Recent Posts'
+			description_html = '<p>Vonge blog features productivity, tips, inspiration and strategies for massive profits. Find out how to set up a successful blog or how to make yours even better!</p>'
+			link_url = '/posts'
+			show_posts = true
+
+		[[en.params.content_blocks]]
+			block = 'newsletter'
+			newsletter_title = 'Join my mailing list'
+			newsletter_description = 'Get inspiration, updates and, cool stuff!'
+			newsletter_identifier = ''
+			newsletter_button = 'Subscribe'
+
+		[[en.params.content_blocks]]
+			block = 'contact-form'
+			form_title = 'Get in touch'
+			form_description = 'Vonge comes with a built-in contact form.'
+			form_success_page = ''
+			form_submission_email = 'site@example.com'
+			form_button_text = 'Send now'
+
+[zh-cn]
+	languageCode = 'zh-cn'
+	languageName = '简体中文'
+	weight = 2
+	contentDir = 'content/zh-cn'
+	[zh-cn.params]
+		author = 'Vanessa Marley'
+		description = 'Vonge 是一款适用于作品集与博客的 Hugo 主题'
+		logo_image = 'images/logo.svg'
+		social_media_share_image = '/images/01.jpg'
+		disqus_identifier = ''
+		google_analytics = ''
+		twitter_handle = ''
+		author_image = '/images/avatar.jpg'
+		date_format = '2006-01-02'
+		language_direction = 'auto'
+		keywords = ['关键词1', '关键词2', '关键词3']
+
+		[[zh-cn.params.navigation]]
+			url = '/'
+			title = '首页'
+		[[zh-cn.params.navigation]]
+			url = '/projects'
+			title = '项目'
+		[[zh-cn.params.navigation]]
+			url = '/posts'
+			title = '博客'
+		[[zh-cn.params.navigation]]
+			url = '/tags'
+			title = '标签'
+		[[zh-cn.params.navigation]]
+			url = ''
+			title = '页面'
+			[[zh-cn.params.navigation.submenu]]
+				url = '/about'
+				title = '关于'
+			[[zh-cn.params.navigation.submenu]]
+				url = '/elements'
+				title = '元素'
+
+		[[zh-cn.params.social_icons]]
+			url = 'https://github.com/cydave'
+			icon = 'GitHub'
+		[[zh-cn.params.social_icons]]
+			url = 'https://twitter.com/_cydave'
+			icon = 'Twitter'
+		[[zh-cn.params.social_icons]]
+			url = '/atom.xml'
+			icon = 'RSS'
+		[[zh-cn.params.social_icons]]
+			url = 'https://pinterest.com'
+			icon = 'Pinterest'
+
+		[zh-cn.params.newsletter]
+			newsletter_title = '订阅我的邮件'
+			newsletter_identifier = ''
+			newsletter_button = '订阅'
+			newsletter_description = '获取灵感、更新和干货！'
+
+		[zh-cn.params.footer]
+			[[zh-cn.params.footer.menu]]
+				url = '/'
+				title = '首页'
+			[[zh-cn.params.footer.menu]]
+				url = '/projects/'
+				title = '项目'
+			[[zh-cn.params.footer.menu]]
+				url = '/elements/'
+				title = '元素'
+			[[zh-cn.params.footer.menu]]
+				url = '/about/'
+				title = '关于'
+			[[zh-cn.params.footer.menu]]
+				url = '/posts/'
+				title = '博客'
+
+		[[zh-cn.params.content_blocks]]
+			block = 'hero'
+			title = '你好，我是 Vanessa Marley'
+			description_html = '<strong>摄影师</strong> 与视觉内容策略师，来自 Albany。我从事生活方式、产品与风景摄影，为线上媒体到印刷艺术的多样需求创作图像。'
+			image = '/images/01.jpg'
+			image_alt = "Vanessa Marley 的照片"
+			cta_button_link = '#contact'
+			cta_button = '联系我'
+			works_button_link = '#projects'
+			works_button = '查看作品'
+
+		[[zh-cn.params.content_blocks]]
+			block = 'projects-section'
+			title = '最新作品'
+			description_html = '<p>我只展示最好的作品，完全出于热情、简洁与创造力！</p>'
+			link_url = '/projects'
+			show_projects = true
+
+		[[zh-cn.params.content_blocks]]
+			block = 'testimonials-section'
+			title = '客户评价'
+			description_html = ''
+			show_testimonials = true
+
+		[[zh-cn.params.content_blocks]]
+			block = 'blog-section'
+			title = '最新文章'
+			description_html = '<p>Vonge 博客分享效率、灵感与实用策略，帮助你把博客做得更好！</p>'
+			link_url = '/posts'
+			show_posts = true
+
+		[[zh-cn.params.content_blocks]]
+			block = 'newsletter'
+			newsletter_title = '订阅我的邮件'
+			newsletter_description = '获取灵感、更新和干货！'
+			newsletter_identifier = ''
+			newsletter_button = '订阅'
+
+		[[zh-cn.params.content_blocks]]
+			block = 'contact-form'
+			form_title = '取得联系'
+			form_description = 'Vonge 内置联系表单。'
+			form_success_page = ''
+			form_submission_email = 'site@example.com'
+			form_button_text = '发送'

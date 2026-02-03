@@ -41,7 +41,8 @@
 4) 复制示例内容与配置（可选但推荐）：
   - 将本仓库的 exampleSite/content/ 复制到你的项目 content/
   - 如需示例静态资源，请参考本仓库的 static/ 目录
-  - 将 exampleSite/hugo.toml 中 [params] 与 [params.content_blocks] 合并到你的配置
+  - 将 exampleSite/hugo.toml 中站点基础配置合并到你的配置
+  - 多语言与语言参数请参考 exampleSite/config/_default/languages.toml 的结构
 
 ### 使用 exampleSite 预览主题
 在本仓库根目录执行：
@@ -54,8 +55,10 @@
 浏览地址：
 - http://localhost:1313
 
-## 配置说明（exampleSite/hugo.toml）
-核心参数位于 [params] 与 [params.content_blocks]：
+## 配置说明（exampleSite/hugo.toml + config/_default/languages.toml）
+配置分为两部分：
+- 站点基础配置：exampleSite/hugo.toml
+- 多语言与语言参数：exampleSite/config/_default/languages.toml
 
 - 基础站点信息
   - baseURL：站点域名
@@ -66,34 +69,36 @@
   - [pagination].pagerSize：列表页分页大小
   - [taxonomies].tag：标签分类名（当前为 tags）
 
-- 全局参数（[params]）
-  - author / author_image：作者与头像
-  - description / keywords：SEO 描述与关键词
+- 全局参数（[params]，位于 hugo.toml）
   - logo_image / social_media_share_image：站点 Logo 与社交分享图
   - disqus_identifier / google_analytics / twitter_handle：评论与统计参数
+  - author_image：作者头像（全局默认）
+
+- 社交链接（[params.social_icons]，位于 hugo.toml）
+  - 建议放置全局共用社交链接
+
+- 语言参数（[languages.<lang>.params]，位于 languages.toml）
+  - author / description / keywords：SEO 与作者信息
   - date_format / language_direction：日期与语言方向
-
-- 导航与社交（[params.navigation] / [params.social_icons]）
-  - 支持 $BASE_URL 占位符
-  - Pages 菜单包含二级子菜单
-
-- 页脚（[params.footer]）
+  - navigation：主导航（支持二级子菜单）
   - footer.menu：页脚导航
+  - content_blocks：首页内容块（多语言文案与链接在此维护）
 
-- 首页内容块（[[params.content_blocks]]）
+- 首页内容块（[[languages.<lang>.params.content_blocks]]）
   - hero / projects-section / testimonials-section / blog-section / newsletter / contact-form
   - 每个内容块的字段在配置中逐项可改
 
-- 多语言（[languages]）
+- 多语言（hugo.toml + languages.toml）
   - 默认语言与子目录：defaultContentLanguage / defaultContentLanguageInSubdir
   - 语言内容目录：content/en 与 content/zh-cn
-  - 可在 languages.zh-cn.params 中覆盖中文导航与首页内容块
+  - 语言定义与参数位于 config/_default/languages.toml
 
 ## 目录结构（简要）
 - exampleSite/content/：示例站点内容（文章、项目、页面、评价）
 - exampleSite/content/en：英文示例内容
 - exampleSite/content/zh-cn：中文示例内容
-- exampleSite/hugo.toml：示例站点配置与参数
+- exampleSite/hugo.toml：示例站点基础配置
+- exampleSite/config/_default/languages.toml：多语言与语言参数配置
 - layouts/：主题模板与组件
 - static/：主题静态资源（CSS、图片、上传文件、JS）
 - i18n/：多语言文案（en.toml / zh-cn.toml）
